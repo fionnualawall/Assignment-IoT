@@ -16,10 +16,14 @@ log = open(filename,'w')
 count = 0
 
 while count < 100:
-    # take a reading, print to the log, then sleep for 5 seconds
+    # take a reading and measure how long the reading takes
+    start = time.time()
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+    elapsed_time = time.time() - start
+    # print the reading to the log file in the required format
     reading_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
     log.write(reading_time + "    Temperature=" + str(int(temperature)) + ", Humidity=" + str(int(humidity)) + "%\n")
-    time.sleep(5)
+    # sleep for five seconds minus the amount of time the reading took
+    time.sleep(5 - elapsed_time)
 
 log.close()
