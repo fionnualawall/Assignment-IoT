@@ -14,11 +14,11 @@ log = open(filename,'w')
 
 # initialise a counter for the loop and variables for tracking temp & humidity
 count = 0
-max_temp = -50
-min_temp = 50
+max_temp = -99
+min_temp = 99
 temp_sum = 0
 max_humidity = 0
-min_humidity = 100
+min_humidity = 200
 humidity_sum = 0
 
 while count < 100:
